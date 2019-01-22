@@ -15,11 +15,9 @@ public class ArrayTaskList extends TaskList implements Cloneable {
 
     private void growArray() {
         int newLength = (arrayTask.length * 3) / 2 + 1;
-
         Task[] newArray = new Task[newLength];
 
         System.arraycopy(arrayTask, 0, newArray, 0, arrayTask.length);
-
         arrayTask = newArray;
     }
 
