@@ -1,5 +1,8 @@
 package ua.edu.sumdu.j2se.levchenko.tasks;
 
+import org.apache.log4j.Logger;
+import ua.edu.sumdu.j2se.levchenko.tasks.repository.TaskRepository;
+
 import java.io.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -8,7 +11,10 @@ import java.util.Iterator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+
 public class TaskIO {
+    private final static Logger log = Logger.getLogger(TaskRepository.class);
+
     public static void writeBinary(TaskList tasks, File file) throws IOException {
         write(tasks, new FileOutputStream(file));
     }
@@ -57,9 +63,9 @@ public class TaskIO {
                 dataOutput.close();
             }
         } catch (FileNotFoundException e) {
-            System.out.println("Невозможно произвести запись в файл.");
+            log.error("Cannot write to file: ", e);
         } catch (IOException e) {
-            System.out.println("Ошибка ввода/вівода =: " + e);
+            log.error("Error happened trying to write: ", e);
         }
 
     }
@@ -252,9 +258,9 @@ public class TaskIO {
                 dataInput.close();
             }
         } catch (FileNotFoundException e) {
-            System.out.println("Невозможно произвести запись в файл.");
+            log.error("Cannot write to file: ", e);
         } catch (IOException e) {
-            System.out.println("Ошибка ввода/вывода =: " + e);
+            log.error("Error happened trying to read: ", e);
         }
     }
 
@@ -343,9 +349,9 @@ public class TaskIO {
                 reader.close();
             }
         } catch (FileNotFoundException e) {
-            System.out.println("Невозможно произвести запись в файл.");
+            log.error("Cannot write to file: ", e);
         } catch (IOException e) {
-            System.out.println("Ошибка ввода/вывода =: " + e);
+            log.error("Error happened trying to write: ", e);
         }
     }
 

@@ -53,6 +53,9 @@ public class MainController extends NotificationObserverController implements In
 
     private final Repository taskRepository;
 
+    /*
+    This is the observatory implementation list when we change the value in the list.
+     */
     private ObservableList<TaskView> taskTableObservableList = FXCollections.observableArrayList();
 
     private Controller aboutController;

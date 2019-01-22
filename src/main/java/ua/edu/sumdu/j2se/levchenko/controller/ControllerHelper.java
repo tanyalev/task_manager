@@ -23,6 +23,10 @@ class ControllerHelper {
         return LocalDate.ofInstant(date.toInstant(), ZoneId.systemDefault());
     }
 
+    /*
+    Following method convert TaskView to Task.
+    It is convenient to get the tasks from the table and fill the table with tasks from the repository.
+     */
     static Task taskViewToModel(TaskView view) {
         Task task;
         if (view.getRepeated().equals("Yes")) {
@@ -34,6 +38,10 @@ class ControllerHelper {
         return task;
     }
 
+    /*
+    Following method convert Task to TaskView.
+    It is convenient to get the tasks from the table and fill the table with tasks from the repository.
+     */
     static TaskView taskModelToView(Task task) {
         TaskView view;
         if (task.isRepeated()) {
