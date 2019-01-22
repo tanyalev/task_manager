@@ -18,9 +18,9 @@ public class TaskNotificator extends Notificator {
         setDaemon(true);
     }
 
-    /*
-    The following method allows you to check if we have incoming tasks.
-    Showing the notification about incoming task.
+    /**
+     * The following method allows you to check if we have incoming tasks.
+     * Showing the notification about incoming task.
      */
     @Override
     public void run() {

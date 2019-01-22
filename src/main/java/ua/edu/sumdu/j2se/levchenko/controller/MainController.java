@@ -1,5 +1,7 @@
 package ua.edu.sumdu.j2se.levchenko.controller;
 
+import org.apache.log4j.Logger;
+
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -53,8 +55,10 @@ public class MainController extends NotificationObserverController implements In
 
     private final Repository taskRepository;
 
-    /*
-    This is the observatory implementation list when we change the value in the list.
+    private final Logger log = Logger.getLogger(MainController.class);
+
+    /**
+     * This is the observatory implementation list when we change the value in the list.
      */
     private ObservableList<TaskView> taskTableObservableList = FXCollections.observableArrayList();
 
@@ -256,10 +260,12 @@ public class MainController extends NotificationObserverController implements In
 
             fileChanged = false;
             this.tasksFile = tasksFile;
+            log.info(String.format("Loaded %d task(s) from %s", this.tasks.size(), file.getAbsolutePath()));
         } catch (RepositoryException e) {
             String errorText = String.format("Error loading tasks from file: %s", tasksFile.getAbsolutePath());
             showErrorMessage(errorText, e.getMessage());
             status.setText(errorText);
+            log.error(String.format("Error loading tasks from file: %s", tasksFile.getAbsolutePath()));
         }
     }
 
@@ -269,10 +275,12 @@ public class MainController extends NotificationObserverController implements In
             status.setText(String.format("Saved tasks to %s", tasksFile.getAbsolutePath()));
             fileChanged = false;
             this.tasksFile = tasksFile;
+            log.info(String.format("Saved %d task(s) to %s", this.tasks.size(), file.getAbsolutePath()));
         } catch (RepositoryException e) {
             String errorText = String.format("Error saving tasks to file: %s", tasksFile.getAbsolutePath());
             showErrorMessage(errorText, e.getMessage());
             status.setText(errorText);
+            log.error(String.format("Error saving tasks to file: %s", tasksFile.getAbsolutePath()));
         }
     }
 

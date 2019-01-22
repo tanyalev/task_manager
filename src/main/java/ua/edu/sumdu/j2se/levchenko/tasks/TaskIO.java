@@ -1,7 +1,6 @@
 package ua.edu.sumdu.j2se.levchenko.tasks;
 
 import org.apache.log4j.Logger;
-import ua.edu.sumdu.j2se.levchenko.tasks.repository.TaskRepository;
 
 import java.io.*;
 import java.text.ParseException;
@@ -13,7 +12,7 @@ import java.util.regex.Pattern;
 
 
 public class TaskIO {
-    private final static Logger log = Logger.getLogger(TaskRepository.class);
+    private final static Logger log = Logger.getLogger(TaskIO.class);
 
     public static void writeBinary(TaskList tasks, File file) throws IOException {
         write(tasks, new FileOutputStream(file));
